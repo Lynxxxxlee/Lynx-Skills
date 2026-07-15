@@ -34,7 +34,7 @@
 在支持 `SKILL.md` 的 Agent 中，可以让 Agent 安装单个目录：
 
 ```text
-帮我安装这个 skill：https://github.com/Lynxxxxlee/clissa-skills/tree/main/explain-new-concepts
+帮我安装这个 skill：https://github.com/Lynxxxxlee/Lynx-Skills/tree/main/explain-new-concepts
 ```
 
 也可以手动复制某个 skill 目录到本地 Skills 目录，例如：
