@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explain New Concepts"
+  short_description: "打开选择页后，用中文解释陌生技术概念，可选检索和纵横分析"
+  default_prompt: "Use $explain-new-concepts to open the explanation selector, then explain this unfamiliar technical term with the chosen depth and optional horizontal-vertical analysis."

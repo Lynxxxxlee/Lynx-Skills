@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>概念解释设置</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #17202a;
+      --muted: #667085;
+      --line: #d9dee7;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --ok: #047857;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(920px, calc(100% - 32px));
+      margin: 32px auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+
+    header {
+      padding: 24px 28px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    form {
+      display: grid;
+      gap: 22px;
+      padding: 24px 28px 28px;
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend {
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .options.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    label {
+      display: block;
+      min-height: 82px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: var(--accent);
+      margin-right: 6px;
+    }
+
+    label:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .title {
+      font-weight: 700;
+    }
+
+    .hint {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .output {
+      display: grid;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 72px;
+      resize: vertical;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .status {
+      color: var(--ok);
+      font-size: 13px;
+      min-height: 20px;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+      }
+
+      header,
+      form {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .options,
+      .options.two {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>概念解释设置</h1>
+      <p>选择这次解释的长度、一个或多个重点、资料检索和纵横分析方式，然后把生成的配置发回 Codex。</p>
+    </header>
+
+    <form>
+      <fieldset>
+        <legend>篇幅</legend>
+        <div class="options">
+          <label><input type="radio" name="length" value="极简"><span class="title">极简</span><span class="hint">快速知道它是什么。</span></label>
+          <label><input type="radio" name="length" value="标准" checked><span class="title">标准</span><span class="hint">概念卡片，短但完整。</span></label>
+          <label><input type="radio" name="length" value="深入"><span class="title">深入</span><span class="hint">展开机制、边界和例子。</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>深度重点（可多选）</legend>
+        <div class="options">
+          <label><input type="checkbox" name="focus" value="概念入门" checked><span class="title">概念入门</span><span class="hint">优先讲清定义和直觉。</span></label>
+          <label><input type="checkbox" name="focus" value="原理机制"><span class="title">原理机制</span><span class="hint">解释内部逻辑和抽象。</span></label>
+          <label><input type="checkbox" name="focus" value="工程落地"><span class="title">工程落地</span><span class="hint">强调真实系统里怎么用。</span></label>
+          <label><input type="checkbox" name="focus" value="论文背景"><span class="title">论文背景</span><span class="hint">强调来源、演化和论文。</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>资料检索</legend>
+        <div class="options">
+          <label><input type="radio" name="research" value="不查"><span class="title">不查</span><span class="hint">直接解释稳定概念。</span></label>
+          <label><input type="radio" name="research" value="必要时查" checked><span class="title">必要时查</span><span class="hint">新、冷门或不确定时查。</span></label>
+          <label><input type="radio" name="research" value="必查"><span class="title">必查</span><span class="hint">附少量论文或网页来源。</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>纵横分析法</legend>
+        <div class="options">
+          <label><input type="radio" name="hv" value="关闭" checked><span class="title">关闭</span><span class="hint">只做概念卡片。</span></label>
+          <label><input type="radio" name="hv" value="轻量"><span class="title">轻量</span><span class="hint">补充短的横纵视角。</span></label>
+          <label><input type="radio" name="hv" value="完整"><span class="title">完整</span><span class="hint">纵向脉络、横向对比、交汇洞察。</span></label>
+        </div>
+      </fieldset>
+
+      <section class="output" aria-label="生成配置">
+        <strong>发回 Codex 的配置</strong>
+        <textarea id="result" readonly></textarea>
+        <div class="actions">
+          <button type="button" id="copy">复制配置</button>
+          <span class="status" id="status"></span>
+        </div>
+      </section>
+    </form>
+  </main>
+
+  <script>
+    const result = document.getElementById("result");
+    const status = document.getElementById("status");
+
+    function selected(name) {
+      return document.querySelector(`input[name="${name}"]:checked`).value;
+    }
+
+    function selectedMany(name) {
+      const values = [...document.querySelectorAll(`input[name="${name}"]:checked`)].map((input) => input.value);
+      return values.length ? values.join("、") : "概念入门";
+    }
+
+    function render() {
+      result.value = `解释设置：篇幅=${selected("length")}；重点=${selectedMany("focus")}；资料检索=${selected("research")}；纵横分析=${selected("hv")}`;
+      status.textContent = "";
+    }
+
+    document.querySelectorAll("input").forEach((input) => {
+      input.addEventListener("change", render);
+    });
+
+    document.getElementById("copy").addEventListener("click", async () => {
+      result.select();
+      try {
+        await navigator.clipboard.writeText(result.value);
+        status.textContent = "已复制。把这行配置发回 Codex 即可。";
+      } catch {
+        document.execCommand("copy");
+        status.textContent = "已选中配置，可手动复制后发回 Codex。";
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>

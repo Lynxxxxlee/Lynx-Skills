@@ -1,0 +1,4 @@
+interface:
+  display_name: "Merge MD Review PDF"
+  short_description: "合并 Obsidian/Markdown 复习资料为带目录 PDF"
+  default_prompt: "Use $merge-md-review-pdf to combine review Markdown files into a verified study PDF with rendered formulas, Obsidian-style tables, chapter headings, and a clickable table of contents."
